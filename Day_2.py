@@ -1,5 +1,5 @@
  #2. Write a python comment saying 'Day 2: 30 Days of python programming' 
- comment = ' Day 2 : 30 days of python programming'
+ # Day 2 : 30 days of python programming'
 
  #3.	Declare a first name variable and assign a value to it
 first_name = 'Faisal Muhammad'
