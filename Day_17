@@ -1,0 +1,12 @@
+names = ['Finland', 'Sweden', 'Norway', 'Denmark', 'Iceland', 'Estonia', 'Russia']
+
+# To unpack the first five countries and store them in a variable called nordic_countries, i use the following code:
+
+
+nordic_countries = names[:5]
+es, ru = names[-2:]
+
+# Print the variables to verify the output
+print(nordic_countries)  # Output: ['Finland', 'Sweden', 'Norway', 'Denmark', 'Iceland']
+print(es)  # Output: Estonia
+print(ru)  # Output: Russia
