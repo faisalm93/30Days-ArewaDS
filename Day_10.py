@@ -36,11 +36,6 @@ for i in range(7):
         print("#", end=" ")
     print()
 
-#5. Print the following pattern:
-	0 x 0 = 0
-	1 x 1 = 1
-	2 x 2 = 4
-
 for i in range(3):
     print(f"{i} x {i} = {i*i}")
 
@@ -64,7 +59,7 @@ for i in range(101):
 
 #Exercises: Level 2
 #1. Use for loop to iterate from 0 to 100 and print the sum of all numbers.
-The sum of all numbers is 5050.
+#The sum of all numbers is 5050.
 total = 0
 for Z in range(101):
     total += Z
@@ -72,7 +67,7 @@ print("The sum of all numbers from 0 to 100 is", total)
 
 
 #2.  Use for loop to iterate from 0 to 100 and print the sum of all evens and the sum of all odds.
-The sum of all evens is 2550. And the sum of all odds is 2500.
+#The sum of all evens is 2550. And the sum of all odds is 2500.
 total_even = 0
 total_odd = 0
 for y in range(101):
@@ -492,4 +487,3 @@ reversed_fruits = []
 for fruit in reversed(fruits):
     reversed_fruits.append(fruit)
 print("Reversed order of fruits:", reversed_fruits)
-
