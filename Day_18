@@ -1,0 +1,142 @@
+#Exercises: Day 18
+#Exercises: Level 1
+
+#Q1. 
+
+# I define the paragraph as a string variable
+paragraph = "'I love teaching. If you do not love teaching what else can you love. I love Python if you do not love something which can give love all the capabilities to develop an application what else can you love."
+
+#Then I converted all letters to lowercase to count the same word regardless of its capitalization
+paragraph = paragraph.lower()
+
+# The paragraph was then splited into words using the split() function
+words = paragraph.split()
+
+# I now create a dictionary to store the frequency of each word
+word_freq = {}
+
+# Then I loop through all the words and update the frequency count in the dictionary
+for word in words:
+    if word in word_freq:
+        # if the word already exists in the dictionary, increment its frequency
+        word_freq[word] += 1
+    else:
+        # if the word doesn't exist in the dictionary yet, set its frequency to 1
+        word_freq[word] = 1
+
+# I also loop through the dictionary to find the word with the highest frequency
+max_freq = 0  # keep track of the highest frequency seen so far
+most_frequent_word = ''  # keep track of the word with the highest frequency
+for word, freq in word_freq.items():
+    if freq > max_freq:
+        # if the frequency of the current word is higher than the highest frequency seen so far,
+        # update the highest frequency and most frequent word variables
+        max_freq = freq
+        most_frequent_word = word
+
+# Lastly, I use the print function to see the most frequent word and its frequency
+print("The most frequent word is '" + most_frequent_word + "' with a frequency of " + str(max_freq))
+
+
+#Q2. The position of some particles on the horizontal x-axis are -12, -4, -3 and -1 in the negative direction, 0 at origin, 4 and 8 in the positive direction. Extract these numbers from this whole text and find the distance between the two furthest particles.
+import re
+
+# Define the positions of the particles on the x-axis
+positions = [-12, -4, -3, -1, 0, 4, 8]
+
+# Define the text with numbers to extract
+text = "The quick brown fox jumps over the lazy dog. The speed of light is 299792458 meters per second. The gravitational constant is 6.67430 × 10-11 m3 kg-1 s-2. The value of pi is approximately 3.14159."
+
+# Find all the numbers in the text using regular expressions
+numbers = re.findall(r'\d+(?:\.\d+)?', text)
+
+# Convert the strings to floats or ints, depending on whether they contain a decimal point
+numbers = [float(num) if '.' in num else int(num) for num in numbers]
+
+# Find the two furthest particles
+furthest_particles = [min(positions), max(positions)]
+for num in numbers:
+    if isinstance(num, (int, float)):
+        if num < min(positions):
+            furthest_particles[0] = num
+        elif num > max(positions):
+            furthest_particles[1] = num
+
+# Calculate the distance between the two furthest particles
+distance = abs(furthest_particles[1] - furthest_particles[0])
+
+# Print the result
+print(f"The distance between the two furthest particles is {distance}")
+
+
+#Exercises: Level 2
+
+#Q1. Write a pattern which identifies if a string is a valid python variable
+
+import re
+
+def is_valid_variable_name(Test_variable):
+    pattern = r'^[a-zA-Z_][a-zA-Z0-9_]*$'
+    return bool(re.match(pattern, Test_variable))
+# Test the function with some sample inputs
+print(is_valid_variable_name("my_variable"))   # True
+print(is_valid_variable_name("1_variable"))    # False
+print(is_valid_variable_name("_variable"))     # True
+print(is_valid_variable_name("variable_123"))  # True
+print(is_valid_variable_name("va$iable"))      # False
+
+
+
+sentence = '''%I $am@% a %tea@cher%, &and& I lo%#ve %tea@ching%;. There $is nothing; &as& mo@re rewarding as educa@ting &and& @emp%o@wering peo@ple. ;I found tea@ching m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s mo@tivate yo@u to be a tea@cher!?'''
+pattern = r'[^\w\s]'
+clean_sentence = re.sub(pattern,'',sentence)
+
+def most_frequent_words(text):
+    '''This function returns the three most frequent words in clean sentences i.e. sentences without punctuation marks.
+    '''
+    words = text.split()
+    d = {}
+    for word in words:
+        d[word] = d.get(word,0) + 1
+    list = [(val,key) for key,val in d.items()]
+    list.sort(reverse=True)
+    return list[:3]
+
+most_frequent_words(clean_sentence)
+
+
+
+import re
+from collections import Counter
+
+sentence = '''%I $am@% a %tea@cher%, &and& I lo%#ve %tea@ching%;. There $is nothing; &as& mo@re rewarding as educa@ting &and& @emp%o@wering peo@ple. ;I found tea@ching m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s mo@tivate yo@u to be a tea@cher!?'''
+
+# remove special characters and punctuation
+cleaned_sentence = re.sub(r'[^\w\s]', '', sentence)
+
+# convert to lowercase and split into words
+words = cleaned_sentence.lower().split()
+
+import re
+
+# Define the input sentence
+sentence = '''%I $am@% a %tea@cher%, &and& I lo%#ve %tea@ching%;. There $is nothing; &as& mo@re rewarding as educa@ting &and& @emp%o@wering peo@ple. ;I found tea@ching m%o@re interesting tha@n any other %jo@bs. %Do@es thi%s mo@tivate yo@u to be a tea@cher!?'''
+
+# Define a regular expression pattern to match special characters and punctuation
+pattern = r'[^\w\s]'
+
+# Remove special characters and punctuation from the input sentence
+cleaned_sentence = re.sub(pattern, '', sentence)
+
+# Print the cleaned sentence
+print("The cleaned sentence is:")
+print(cleaned_sentence)
+
+# count word frequencies and return top 3
+word_counts = Counter(words)
+top_three = word_counts.most_common(3)
+# Print the three most common words
+print("The three most frequent words in the sentence are:")
+for word, count in top_three:
+    print(f"{word}: {count}")
+#print(top_three)
