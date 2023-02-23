@@ -1,0 +1,8 @@
+                        #Exercises: Day 19
+#Exercises: Level 1
+#Q1. Write a function which count number of lines and number of words in a text.
+
+def count_lines_words(text):
+    lines = len(text.split('\n'))
+    words = len(text.split())
+    return lines, words
