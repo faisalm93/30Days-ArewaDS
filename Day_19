@@ -2,7 +2,19 @@
 #Exercises: Level 1
 #Q1. Write a function which count number of lines and number of words in a text.
 
-def count_lines_words(text):
-    lines = len(text.split('\n'))
-    words = len(text.split())
-    return lines, words
+import re
+
+def count_words_lines(file):
+    with open(file) as f:
+        lines = f.readlines()
+        words = []
+        for line in lines:
+            # removing all characters that are not whitespace or alphanumeric using regex
+            line = re.sub(r'[^\w\s]','',line)
+            words.extend(line.split())
+    print(f'The number of lines and words in the file "{file}" are {len(lines)} and {len(words)} respectively')
+
+count_words_lines('melina_trump_speech.txt')
+count_words_lines('donald_speech.txt')
+count_words_lines('michelle_obama_speech.txt')
+count_words_lines('obama_speech.txt')
