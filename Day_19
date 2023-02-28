@@ -18,3 +18,232 @@ count_words_lines('melina_trump_speech.txt')
 count_words_lines('donald_speech.txt')
 count_words_lines('michelle_obama_speech.txt')
 count_words_lines('obama_speech.txt')
+count_words_lines('countries_data.json')
+
+#Q2. Read the countries_data.json data file in data directory, create a function that finds the ten most spoken languages
+import json
+
+def find_top_ten_languages():
+    # Open and load the JSON file
+    with open('data/countries_data.json') as f:
+        countries_data = json.load(f)
+
+    # Create a dictionary to store the count of each language
+    languages_count = {}
+
+    # Iterate over the list of countries and count the number of occurrences of each language
+    for country in countries_data:
+        languages = country['languages']
+        for language in languages:
+            if language in languages_count:
+                languages_count[language] += 1
+            else:
+                languages_count[language] = 1
+                
+    top_ten_languages = list(sorted_languages_count.keys())[:10]
+
+    return top_ten_languages
+top_languages = find_top_ten_languages()
+print(top_languages)
+
+#Q3. Read the countries_data.json data file in data directory, create a function that creates a list of the ten most populated countries
+import json
+
+def find_top_ten_populated_countries():
+    # Open and load the JSON file
+    with open('data/countries_data.json') as f:
+        countries_data = json.load(f)
+
+    # Create a dictionary to store the population of each country
+    population_dict = {}
+
+    # Iterate over the list of countries and add the population of each country to the dictionary
+    for country in countries_data:
+        name = country['name']
+        population = country['population']
+        population_dict[name] = population
+
+    top_ten_populated_countries = list(sorted_population_dict.keys())[:10]
+
+    return top_ten_populated_countries
+    top_populated_countries = find_top_ten_populated_countries()
+print(top_populated_countries)
+
+        
+        # Exercises: Level 2
+#Q1. Extract all incoming email addresses as a list from the email_exchange_big.txt file.
+
+import json
+
+def find_top_ten_populated_countries():
+    # Open and load the JSON file
+    with open('data/countries_data.json') as f:
+        countries_data = json.load(f)
+
+    # Create a dictionary to store the population of each country
+    population_dict = {}
+
+    # Iterate over the list of countries and add the population of each country to the dictionary
+    for country in countries_data:
+        name = country['name']
+        population = country['population']
+        population_dict[name] = population
+
+    # Extract the top ten countries with the highest populations
+    top_ten_populated_countries = list(sorted_population_dict.keys())[:10]
+
+    return top_ten_populated_countries
+top_populated_countries = find_top_ten_populated_countries()
+print(top_populated_countries)
+
+
+#Q2. Find the most common words in the English language. Call the name of your function find_most_common_words, it will take two parameters - a string or a file and a positive integer, indicating the number of words. Your function will return an array of tuples in descending order. Check the output
+
+def find_most_common_words(file,n=10):
+  
+    with open(file) as f:
+        lines = f.readlines()
+    words = []
+    for line in lines:
+        # removing all characters that are not whitespace or alphanumeric using regex, don't want punctuation affecting count
+        line = re.sub(r'[^\w\s]','',line)
+        words.extend(line.split())
+    words_dict = {}
+    for word in words:
+        words_dict[word] = words_dict.get(word,0) + 1
+    words_sorted = sorted(words_dict.items(),key=lambda x:x[1],reverse=True)
+    result = [(word[1],word[0]) for word in words_sorted]
+    return result[:n]
+    
+   #Q3. Use the function, find_most_frequent_words to find: a) The ten most frequent words used in Obama's speech b) The ten most frequent words used in Michelle's speech c) The ten most frequent words used in Trump's speech d) The ten most frequent words used in Melina's speech
+   
+   # (A) Read the text of Obama's speech from a file
+with open('obama_speech.txt', 'r') as f:
+    obama_speech = f.read()
+
+# Find the ten most frequent words in Obama's speech
+obama_top_words = find_most_frequent_words(obama_speech, 10)
+
+# Print the ten most frequent words in Obama's speech
+print("Ten most frequent words in Obama's speech:")
+print(obama_top_words)
+
+#(B) # Read the text of Michelle's speech from a file
+with open('michelle_speech.txt', 'r') as f:
+    michelle_speech = f.read()
+
+# Find the ten most frequent words in Michelle's speech
+michelle_top_words = find_most_frequent_words(michelle_speech, 10)
+
+# Print the ten most frequent words in Michelle's speech
+print("Ten most frequent words in Michelle's speech:")
+print(michelle_top_words)
+
+
+# (C)Read the text of Trump's speech from a file
+with open('trump_speech.txt', 'r') as f:
+    trump_speech = f.read()
+
+# Find the ten most frequent words in Trump's speech
+trump_top_words = find_most_frequent_words(trump_speech, 10)
+
+# Print the ten most frequent words in Trump's speech
+print("Ten most frequent words in Trump's speech:")
+print(trump_top_words)
+
+
+# (D)Read the text of Melina's speech from a file
+with open('melina_speech.txt', 'r') as f:
+    melina_speech = f.read()
+
+# Find the ten most frequent words in Melina's speech
+melina_top_words = find_most_frequent_words(melina_speech, 10)
+
+# Print the ten most frequent words in Melina's speech
+print("Ten most frequent words in Melina's speech:")
+print(melina_top_words)
+
+
+#Q4. Write a python application that checks similarity between two texts. It takes a file or a string as a parameter and it will evaluate the similarity of the two texts. For instance check the similarity between the transcripts of Michelle's and Melina's speech. You may need a couple of functions, function to clean the text(clean_text), function to remove support words(remove_support_words) and finally to check the similarity(check_text_similarity). List of stop words are in the data directory
+def clean_text(text):
+    # Remove non-alphabetic characters and convert to lowercase
+    cleaned_text = re.sub(r'[^a-z ]+', '', text.lower())
+    return cleaned_text
+
+def remove_stop_words(text):
+    # Load the stop words from a file
+    with open(Path('data') / 'stop_words.txt', 'r') as f:
+        stop_words = set(f.read().split())
+
+    # Remove the stop words from the text
+    words = text.split()
+    filtered_words = [word for word in words if word not in stop_words]
+    return ' '.join(filtered_words)
+    
+    def check_text_similarity(michelle_obama_speech.txt, melina_trump_speech.txt):
+    # Clean and remove stop words from the two texts
+    cleaned_text1 = remove_stop_words(clean_text(michelle_obama_speech.txt))
+    cleaned_text2 = remove_stop_words(clean_text(melina_trump_speech.txt))
+
+    # Create a set of all unique words in the two texts
+    words1 = set(cleaned_text1.split())
+    words2 = set(cleaned_text2.split())
+    unique_words = words1.union(words2)
+    
+    
+    #Q5. Find the 10 most repeated words in the romeo_and_juliet.txt
+    
+    # Read the text from the file
+with open('romeo_and_juliet.txt', 'r') as f:
+    text = f.read()
+
+# Remove non-alphabetic characters and convert to lowercase
+cleaned_text = re.sub(r'[^a-z ]+', '', text.lower())
+
+# Split the text into words
+words = cleaned_text.split()
+
+# Count the frequency of each word
+word_counts = Counter(words)
+
+# Get the 10 most common words and their frequencies
+most_common_words = word_counts.most_common(10)
+
+# Print the results
+for word, count in most_common_words:
+    print(f"{word}: {count}")
+
+#Q5. Read the hacker news csv file and find out: a) Count the number of lines containing python or Python b) Count the number lines containing JavaScript, javascript or Javascript c) Count the number lines containing Java and not JavaScript
+
+import csv
+
+# Open the CSV file for reading
+with open('hacker_news.csv', 'r') as file:
+    reader = csv.reader(file)
+
+    # Initialize counters
+    python_count = 0
+    javascript_count = 0
+    java_not_js_count = 0
+
+    # Iterate over rows in the CSV file
+    for row in reader:
+        # Extract the title from the row
+        title = row[1]
+
+        # Check if the title contains 'python' or 'Python'
+        if 'python' in title or 'Python' in title:
+            python_count += 1
+
+        # Check if the title contains 'JavaScript', 'javascript' or 'Javascript'
+        if 'JavaScript' in title or 'javascript' in title or 'Javascript' in title:
+            javascript_count += 1
+
+        # Check if the title contains 'Java' but not 'JavaScript'
+        if 'Java' in title and 'JavaScript' not in title:
+            java_not_js_count += 1
+
+# Print the results
+print(f"Lines containing 'python' or 'Python': {python_count}")
+print(f"Lines containing 'JavaScript', 'javascript' or 'Javascript': {javascript_count}")
+print(f"Lines containing 'Java' but not 'JavaScript': {java_not_js_count}")
