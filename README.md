@@ -13,28 +13,52 @@ Day_4 Strings:- I learned how to create a string, format it, concatenate it, wri
 Day_5 Lists:- I learned how to create a List, accessing list items using positive and negetive indexing, removing list using pop and del, copying,joining,counting and finding index of an item in a list.
 
 Day_6 Tuples:-
-Sets
-Dictionaries
-Conditionals
-Loops
-Functions
-Modules
-List_comprehension
-Higher_order_functions
-Python_type_errors
-Python_date_time
-Exception_handling
-Regular_expressions
-File_handling/python for web
-Python_package_manager
-Classes_and_objects
-Web_scraping
-Virtual_environment
-Statistics
-Pandas
-Python_web
-Python_with_mongodb
-API building
-Building_API final
-Conclusions
+
+DAy_ 7Sets:-
+
+Day_8 Dictionaries:-
+
+Day_9 Conditionals:-
+
+Day_10 Loops:-
+
+Day_11 Functions:-
+
+Day_12 Modules:-
+
+Day_13 List_comprehension:-
+
+Day_14 Higher_order_functions:-
+
+Day_15 Python_type_errors:-
+
+Day_16 Python_date_time:-
+
+Day_17 Exception_handling:-
+
+Day_18 Regular_expressions:-
+
+Day_19 File_handling/python for web:-
+
+Day_20 Python_package_manager:-
+
+Day_21 Classes_and_objects:-
+
+Day_22 Web_scraping
+
+Day_23 Virtual_environment
+
+Day_24 Statistics:-
+
+Day_25 Pandas:-
+
+Day_26 Python_web:-
+
+Day_27 Python_with_mongodb:-
+
+Day_28 API building:-
+
+Day_29 Building_API final:-
+
+Day_30 Conclusions:-
 
