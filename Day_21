@@ -1,0 +1,69 @@
+                            #Exercises: Day 21
+#Exercises: Level 1
+Python has the module called statistics and we can use this module to do all the statistical calculations. However, to learn how to make function and reuse function let us try to develop a program, which calculates the measure of central tendency of a sample (mean, median, mode) and measure of variability (range, variance, standard deviation). In addition to those measures, find the min, max, count, percentile, and frequency distribution of the sample. You can create a class called Statistics and create all the functions that do statistical calculations as methods for the Statistics class.
+
+import statistics
+
+ages = [31, 26, 34, 37, 27, 26, 32, 32, 26, 27, 27, 24, 32, 33, 27, 25, 26, 38, 37, 31, 34, 24, 33, 29, 26]
+
+count = len(ages)
+total = sum(ages)
+minimum = min(ages)
+maximum = max(ages)
+range_ = maximum - minimum
+mean = total / count
+median = statistics.median(ages)
+mode_count = statistics.mode(ages)
+standard_deviation = statistics.stdev(ages)
+variance = statistics.variance(ages)
+frequency_distribution = [(round(ages.count(age) / count * 100, 1), age) for age in set(ages)]
+frequency_distribution.sort(reverse=True)
+
+print(f"Count: {count}")
+print(f"Sum: {total}")
+print(f"Min: {minimum}")
+print(f"Max: {maximum}")
+print(f"Range: {range_}")
+print(f"Mean: {mean}")
+print(f"Median: {median}")
+print(f"Mode: {{'mode': {mode_count}, 'count': {ages.count(mode_count)}}}")
+print(f"Standard Deviation: {standard_deviation:.1f}")
+print(f"Variance: {variance:.1f}")
+print(f"Frequency Distribution: {frequency_distribution}")
+
+
+
+#Exercises: Level 2
+Create a class called PersonAccount. It has firstname, lastname, incomes, expenses properties and it has total_income, total_expense, account_info, add_income, add_expense and account_balance methods. Incomes is a set of incomes and its description. The same goes for expenses.
+
+
+class PersonAccount:
+    def __init__(self, firstname, lastname, incomes=None, expenses=None):
+        self.firstname = firstname
+        self.lastname = lastname
+        self.incomes = incomes if incomes else {}
+        self.expenses = expenses if expenses else {}
+
+    def total_income(self):
+        return sum(self.incomes.values())
+
+    def total_expense(self):
+        return sum(self.expenses.values())
+
+    def account_info(self):
+        return f"{self.firstname} {self.lastname}\nTotal Income: {self.total_income()}\nTotal Expense: {self.total_expense()}"
+
+    def add_income(self, description, amount):
+        if description in self.incomes:
+            self.incomes[description] += amount
+        else:
+            self.incomes[description] = amount
+
+    def add_expense(self, description, amount):
+        if description in self.expenses:
+            self.expenses[description] += amount
+        else:
+            self.expenses[description] = amount
+
+    def account_balance(self):
+        return self.total_income() - self.total_expense()
