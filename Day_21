@@ -1,6 +1,7 @@
-                            #Exercises: Day 21
+"""Exercises: Day 21
 #Exercises: Level 1
-Python has the module called statistics and we can use this module to do all the statistical calculations. However, to learn how to make function and reuse function let us try to develop a program, which calculates the measure of central tendency of a sample (mean, median, mode) and measure of variability (range, variance, standard deviation). In addition to those measures, find the min, max, count, percentile, and frequency distribution of the sample. You can create a class called Statistics and create all the functions that do statistical calculations as methods for the Statistics class.
+Python has the module called statistics and we can use this module to do all the statistical calculations. However, to learn how to make function and reuse function let us try to develop a program, which calculates the measure of central tendency of a sample (mean, median, mode) and measure of variability (range, variance, standard deviation). In addition to those measures, find the min, max, count, percentile, and frequency distribution of the sample. You can create a class called Statistics and create all the functions that do statistical calculations as methods for the Statistics class."""
+
 
 import statistics
 
@@ -33,37 +34,51 @@ print(f"Frequency Distribution: {frequency_distribution}")
 
 
 
-#Exercises: Level 2
-Create a class called PersonAccount. It has firstname, lastname, incomes, expenses properties and it has total_income, total_expense, account_info, add_income, add_expense and account_balance methods. Incomes is a set of incomes and its description. The same goes for expenses.
 
-
+'''Create a class called PersonAccount. It has firstname, lastname, incomes, expenses properties and 
+it has total_income, total_expense, account_info, add_income, add_expense and account_balance methods. 
+Incomes is a set of incomes and its description. The same goes for expenses.
+'''
 class PersonAccount:
-    def __init__(self, firstname, lastname, incomes=None, expenses=None):
+    def __init__(self, firstname, lastname):
         self.firstname = firstname
         self.lastname = lastname
-        self.incomes = incomes if incomes else {}
-        self.expenses = expenses if expenses else {}
+        self.incomes = []
+        self.expenses = []
+   
+    def add_income(self, monie, descrpt):
+        self.incomes.append((monie, descrpt))
+    
+    def add_expense(self, exp, descrpt):
+        self.expenses.append((exp, descrpt))
 
     def total_income(self):
-        return sum(self.incomes.values())
-
+        total = 0
+        for i in self.incomes:
+            total+=i[0]
+        return total
+    
     def total_expense(self):
-        return sum(self.expenses.values())
-
-    def account_info(self):
-        return f"{self.firstname} {self.lastname}\nTotal Income: {self.total_income()}\nTotal Expense: {self.total_expense()}"
-
-    def add_income(self, description, amount):
-        if description in self.incomes:
-            self.incomes[description] += amount
-        else:
-            self.incomes[description] = amount
-
-    def add_expense(self, description, amount):
-        if description in self.expenses:
-            self.expenses[description] += amount
-        else:
-            self.expenses[description] = amount
-
+        total_exp = 0
+        for expense in self.expenses:
+            total_exp+=expense[0]
+        return total_exp
+    
     def account_balance(self):
-        return self.total_income() - self.total_expense()
+        acc_bal = self.total_income() - self.total_expense()
+        return acc_bal
+    
+    def account_info(self):
+        print(F"fullname: {self.firstname} {self.lastname}")
+        print(F"incomes: {self.incomes}")
+        print(F"expenses: {self.expenses}")
+        print(F"total incomes: {self.total_income()}")
+        print(F"total expenses: {self.total_expense()}")
+        print(F"account balance: {self.account_balance()}")
+
+person = PersonAccount('Abdurrahman', 'Bin Faisal')
+person.add_income(12300, 'parents subsidy')
+person.add_income(10900, "monthly allowance")
+person.add_expense(590, 'Sweets')
+person.add_expense(1900, "Cheese")
+person.account_info()
