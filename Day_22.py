@@ -1,34 +1,101 @@
+# Q1.Scrape the following website and store the data as json file(url = 'http://www.bu.edu/president/boston-university-facts-stats/').
+ 
 import requests
 from bs4 import BeautifulSoup
 import json
 
-# Define the URL to scrape
 url = 'http://www.bu.edu/president/boston-university-facts-stats/'
 
-# Make a GET request to the URL and get the response
+# Make a request to the website and get the HTML content
 response = requests.get(url)
+html_content = response.content
 
-# Parse the HTML content of the response using BeautifulSoup
-soup = BeautifulSoup(response.content, 'html.parser')
+# Parse the HTML content using BeautifulSoup
+soup = BeautifulSoup(html_content, 'html.parser')
 
-# Find the table element that contains the data we want to scrape
-table = soup.find('table', class_='tablepress')
+# Find the table containing the data
 
-# Extract the table headers
-headers = [header.text.strip() for header in table.find_all('th')]
+table = soup.find('table')
 
-# Extract the table rows
-rows = []
-for row in table.find_all('tr'):
-    cells = [cell.text.strip() for cell in row.find_all('td')]
-    if cells:
-        rows.append(cells)
+# Find the table headers and rows
+headers = table.find_all('th')
+rows = table.find_all('tr')[1:]
 
-# Convert the table data to a list of dictionaries
+# Initialize a list to store the data
 data = []
+
+# Loop over the rows and extract the data
 for row in rows:
-    data.append(dict(zip(headers, row)))
+    values = [td.text.strip() for td in row.find_all('td')]
+    data.append(dict(zip([header.text.strip() for header in headers], values)))
 
 # Write the data to a JSON file
-with open('bu_data.json', 'w') as outfile:
-    json.dump(data, outfile)
+with open('bu_facts_stats.json', 'w') as f:
+    json.dump(data, f, indent=4)
+
+
+#Q2. Extract the table in this url (https://archive.ics.uci.edu/ml/datasets.php) and change it to a json file
+
+url = 'https://archive.ics.uci.edu/ml/datasets.php'
+
+# Make a GET request to the URL and get the HTML content
+response = requests.get(url)
+html_content = response.content
+
+# Parse the HTML content using BeautifulSoup
+soup = BeautifulSoup(html_content, 'html.parser')
+
+# Find the table containing the data
+table = soup.find('table')
+
+# Find the table headers and rows
+headers = [header.text.strip() for header in table.find_all('th')]
+rows = table.find_all('tr')[1:]
+
+# Initialize a list to store the data
+data = []
+
+# Loop over the rows and extract the data
+for row in rows:
+    values = [td.text.strip() for td in row.find_all('td')]
+    data.append(dict(zip(headers, values)))
+
+# Write the data to a JSON file
+with open('uci_datasets.json', 'w') as f:
+    json.dump(data, f, indent=4)
+
+#Q3. Scrape the presidents table and store the data as json(https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States). The table is not very structured and the scrapping may take very long time.
+
+url = 'https://en.wikipedia.org/wiki/List_of_presidents_of_the_United_States'
+
+# Make a GET request to the URL and get the HTML content
+response = requests.get(url)
+html_content = response.content
+
+# Parse the HTML content using BeautifulSoup
+soup = BeautifulSoup(html_content, 'html.parser')
+
+# Find the table containing the data
+table = soup.find_all('table')[1]
+
+# Find the table headers and rows
+headers = [th.text.strip() for th in table.find_all('th')]
+rows = table.find_all('tr')[1:]
+
+# Initialize a list to store the data
+data = []
+
+# Loop over the rows and extract the data
+for row in rows:
+    values = []
+    for td in row.find_all('td'):
+        if td.find('a'):
+            value = td.find('a').text.strip()
+        else:
+            value = td.text.strip()
+        values.append(value)
+    if values:
+        data.append(dict(zip(headers, values)))
+# Write the data to a JSON file
+with open('presidents.json', 'w') as f:
+    json.dump(data, f, indent=4)
