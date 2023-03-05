@@ -12,15 +12,15 @@ Day_4 Strings:- I learned how to create a string, format it, concatenate it, wri
 
 Day_5 Lists:- I learned how to create a List, accessing list items using positive and negetive indexing, removing list using pop and del, copying,joining,counting and finding index of an item in a list.
 
-Day_6 Tuples:-
+Day_6 Tuples:- I learned how to create a tupple, access its item, joining, deleting as well as changing tuples to list.
 
-DAy_ 7Sets:-
+DAy_ 7Sets:- I learned how to create a set, getting its length, adding, removing, converting,joining, finding intersection,symmetric diffrences between two sets, as well as checking a subsets and superset.
 
-Day_8 Dictionaries:-
+Day_8 Dictionaries:- I learned how to create a dictionary, accessing dictionary items, add, delete,copy as well as  changing it to list. 
 
-Day_9 Conditionals:-
+Day_9 Conditionals:- I learned how to create if, if else, if elif else if and or conditions as well as short hands and nested condition.
 
-Day_10 Loops:-
+Day_10 Loops:- I learned how to create a loops which includes:- while,for,nested for and for else. i also learned range function.
 
 Day_11 Functions:-
 
