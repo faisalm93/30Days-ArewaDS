@@ -22,33 +22,33 @@ Day_9 Conditionals:- I learned how to create if, if else, if elif else if and or
 
 Day_10 Loops:- I learned how to create a loops which includes:- while,for,nested for and for else. i also learned range function.
 
-Day_11 Functions:-
+Day_11 Functions:- I learned how to define a function, calling and declaring a function, passing arguments with key values, as well as passing arbitrary numbers of parameters in function.
 
-Day_12 Modules:-
+Day_12 Modules:- I learned what is module, creating and importing a module as well as renaming.
 
-Day_13 List_comprehension:-
+Day_13 List_comprehension:- I learned list comprehension and creating a Lambda function.
 
-Day_14 Higher_order_functions:-
+Day_14 Higher_order_functions:- Ilearned how to define high order function, python closure, creating and applying multiple decorator. I learned build-in functions like map, filter and reduce.
 
-Day_15 Python_type_errors:-
+Day_15 Python_type_errors:- I learened python errors types like Sntax, Name, Index, moduleNotfound, attribute, keys and Zerodivision error.
 
-Day_16 Python_date_time:-
+Day_16 Python_date_time:- I learened how to get datetime information, formatting date output, getting two diffrences between two points in time, as well as 
 
-Day_17 Exception_handling:-
+Day_17 Exception_handling:-I learened how to pack and unpack arguments, and list in python. 
 
-Day_18 Regular_expressions:-
+Day_18 Regular_expressions:- I learened re module, method in re module, writing ReGEx as well as spliting text using RegEx.
 
-Day_19 File_handling/python for web:-
+Day_19 File_handling/python for web:- I learened file handling like opening, reading, writing and updating a file. I learened file type extensions like csv,xml,and json.
 
-Day_20 Python_package_manager:-
+Day_20 Python_package_manager:- I learened what is PIP, how to install it, uninstall, list and show pckages as well as reading from url. 
 
-Day_21 Classes_and_objects:-
+Day_21 Classes_and_objects:- I learened how to create class, object, constructor,inheritance as well as modifying default values and overidding parent methods.
 
-Day_22 Web_scraping
+Day_22 Web_scraping:- I learened webscraping.
 
-Day_23 Virtual_environment
+Day_23 Virtual_environment:- I learened how set up a virtual environment.
 
-Day_24 Statistics:-
+Day_24 Statistics:- I learened python statistical analysis tool. 
 
 Day_25 Pandas:-
 
